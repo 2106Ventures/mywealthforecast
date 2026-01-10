@@ -3,91 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Wealth Forecast | Plan Your Financial Future</title>
+    <title>My Wealth Forecast | Precision Financial Intelligence</title>
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236366f1'/%3E%3Cpath d='M7 22l6-6 4 4 8-8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M25 12h-5m5 0v5' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
         :root {
-            --app-bg: #0b0f19;
-            --app-accent: #6366f1;
-            --app-secondary: #a855f7;
+            --app-bg: #030712; /* Deep grey-black from app */
+            --app-sidebar: #0f172a;
+            --app-accent-cyan: #22d3ee;
+            --app-accent-purple: #a855f7;
+            --app-card-bg: rgba(15, 23, 42, 0.6);
+            --app-border: rgba(51, 65, 85, 0.5);
         }
 
         body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
+            font-family: 'Inter', sans-serif; 
             background-color: var(--app-bg);
-            color: #f8fafc;
+            color: #f1f5f9;
             scroll-behavior: smooth;
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--app-card-bg);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--app-border);
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+            background: linear-gradient(135deg, #22d3ee 0%, #a855f7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-glow {
-            position: absolute;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(11, 15, 25, 0) 70%);
-            top: -10vw;
-            right: -10vw;
-            z-index: -1;
-        }
-
         .nav-blur {
-            background: rgba(11, 15, 25, 0.8);
+            background: rgba(3, 7, 18, 0.85);
             backdrop-filter: saturate(180%) blur(20px);
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
+            background: #6366f1;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-primary:hover {
+            background: #4f46e5;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Chart recreation styles */
+        .chart-grid {
+            background-image: linear-gradient(var(--app-border) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--app-border) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .line-path-historical {
+            stroke: var(--app-accent-cyan);
+            filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4));
+        }
+
+        .line-path-projected {
+            stroke: var(--app-accent-purple);
+            stroke-dasharray: 6 4;
+            filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.4));
+        }
+
+        /* Section dividers */
+        .section-header-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #94a3b8;
         }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <div class="hero-glow"></div>
+    <!-- Subtle Background Elements -->
+    <div class="fixed top-0 right-0 w-[50vw] h-[50vw] bg-indigo-500/10 blur-[120px] -z-10 rounded-full"></div>
+    <div class="fixed bottom-0 left-0 w-[40vw] h-[40vw] bg-purple-500/5 blur-[120px] -z-10 rounded-full"></div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 nav-blur border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
+            <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center gap-3">
-                    <div class="bg-indigo-500 p-2 rounded-xl">
+                    <div class="bg-indigo-600 p-1.5 rounded-lg">
                         <i data-lucide="line-chart" class="text-white w-5 h-5"></i>
                     </div>
-                    <span class="text-xl font-extrabold tracking-tight text-white">My Wealth Forecast</span>
+                    <span class="text-lg font-bold tracking-tight text-white">My Wealth Forecast</span>
                 </div>
-                <div class="hidden md:flex space-x-10 text-[13px] font-semibold uppercase tracking-widest text-slate-400">
-                    <a href="#features" class="hover:text-indigo-400 transition-colors">How it works</a>
-                    <a href="#fire" class="hover:text-indigo-400 transition-colors">Your Freedom Date</a>
-                    <a href="#security" class="hover:text-indigo-400 transition-colors">Privacy</a>
+                <div class="hidden md:flex space-x-10 text-[12px] font-bold uppercase tracking-wider text-slate-400">
+                    <a href="#features" class="hover:text-cyan-400 transition-colors">Platform</a>
+                    <a href="#fire" class="hover:text-cyan-400 transition-colors">Analysis</a>
+                    <a href="#pricing" class="hover:text-cyan-400 transition-colors">Pricing</a>
+                    <a href="#security" class="hover:text-cyan-400 transition-colors">Security</a>
                 </div>
                 <div>
-                    <a href="https://app.mywealthforecast.com" class="btn-primary text-white px-6 py-2.5 rounded-xl font-bold text-sm">
-                        Start Planning
+                    <a href="https://app.mywealthforecast.com" class="btn-primary text-white px-5 py-2 rounded-lg font-bold text-sm">
+                        Open App
                     </a>
                 </div>
             </div>
@@ -95,253 +115,323 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="pt-40 pb-24 px-4 text-center">
+    <header class="pt-32 pb-20 px-4 text-center">
         <div class="max-w-4xl mx-auto">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[11px] font-bold uppercase tracking-[0.2em] mb-8">
-                Smart Personal Wealth Tracking
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-800/50 border border-slate-700/50 text-cyan-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8">
+                Enterprise Wealth Intelligence
             </div>
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] mb-8 tracking-tight">
-                Forecast your <span class="gradient-text">financial future.</span>
+            <h1 class="text-5xl md:text-7xl font-black text-white leading-[1] mb-6 tracking-tight">
+                Forecast your <br><span class="gradient-text">financial future.</span>
             </h1>
-            <p class="text-lg md:text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-                Get out of complex spreadsheets. See exactly where your money is today and exactly when you can reach financial independence.
+            <p class="text-lg text-slate-400 mb-12 max-w-xl mx-auto leading-relaxed font-medium">
+                Get out of complex spreadsheets. Professional-grade auditing meets AI-driven intelligence to map your journey to freedom.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-5">
-                <a href="https://app.mywealthforecast.com" class="btn-primary text-white px-10 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
-                    Get My Forecast <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://app.mywealthforecast.com" class="btn-primary text-white px-8 py-3.5 rounded-xl font-extrabold text-md flex items-center justify-center gap-3">
+                    Launch Platform <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </a>
-                <a href="#features" class="glass-card text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white/5 transition-all">
-                    See How It Works
+                <a href="#features" class="glass-card text-white px-8 py-3.5 rounded-xl font-extrabold text-md hover:bg-slate-800 transition-all">
+                    System Overview
                 </a>
             </div>
         </div>
 
-        <!-- App Dashboard Preview Mockup -->
-        <div class="mt-20 max-w-5xl mx-auto px-4">
-            <div class="glass-card rounded-[2rem] p-1.5 shadow-2xl overflow-hidden">
-                <div class="bg-slate-950/50 rounded-[1.8rem] p-8 text-left border border-white/5">
-                    <div class="flex justify-between items-center mb-10">
-                        <div>
-                            <p class="text-slate-500 text-[10px] uppercase font-bold tracking-widest mb-1">Current Net Worth</p>
-                            <h2 class="text-4xl font-black text-white">$2,840,152.<span class="text-slate-600">45</span></h2>
+        <!-- High Fidelity App Mockup (Matches Screenshots) -->
+        <div class="mt-20 max-w-6xl mx-auto px-4">
+            <div class="glass-card rounded-2xl p-1.5 shadow-2xl">
+                <div class="bg-gray-950 rounded-[1.2rem] overflow-hidden border border-white/5">
+                    <!-- App Mockup Top Bar -->
+                    <div class="h-12 border-b border-white/5 bg-slate-900/50 flex items-center justify-between px-6">
+                        <div class="flex gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                            <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                            <div class="w-3 h-3 rounded-full bg-slate-700"></div>
                         </div>
-                        <div class="flex gap-3">
-                            <div class="bg-white/5 p-3 rounded-xl border border-white/5 text-indigo-400 cursor-pointer" title="Privacy Mode">
-                                <i data-lucide="eye-off" class="w-5 h-5"></i>
+                        <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Dashboard — Live Snapshot</div>
+                        <div class="w-12"></div>
+                    </div>
+
+                    <!-- App Content Recreation -->
+                    <div class="p-8 text-left">
+                        <div class="grid lg:grid-cols-4 gap-6 mb-10">
+                            <div class="lg:col-span-3">
+                                <span class="section-header-label">Net Asset Value</span>
+                                <h2 class="text-4xl md:text-5xl font-black text-white mt-1">$2,840,152.<span class="text-slate-600 italic">45</span></h2>
+                                <div class="flex items-center gap-3 mt-3">
+                                    <span class="text-xs font-bold text-emerald-400 flex items-center gap-1">
+                                        <i data-lucide="trending-up" class="w-3 h-3"></i> +1.2%
+                                    </span>
+                                    <span class="text-[10px] text-slate-500 uppercase font-black tracking-tighter">vs last month</span>
+                                </div>
                             </div>
-                            <a href="https://app.mywealthforecast.com" class="btn-primary text-white px-5 py-3 rounded-xl text-xs font-black uppercase tracking-widest">Update Today</a>
+                            <div class="flex flex-col justify-center items-end gap-3">
+                                <button class="w-full py-2.5 px-4 bg-indigo-600/10 border border-indigo-500/30 text-indigo-400 rounded-lg text-[11px] font-black uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition-all">
+                                    Snapshot Wizard
+                                </button>
+                                <div class="flex gap-2 w-full">
+                                    <div class="flex-1 py-2 px-3 bg-slate-800 rounded-lg flex items-center justify-center text-slate-400"><i data-lucide="eye-off" class="w-4 h-4"></i></div>
+                                    <div class="flex-1 py-2 px-3 bg-slate-800 rounded-lg flex items-center justify-center text-slate-400"><i data-lucide="settings" class="w-4 h-4"></i></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="h-64 w-full relative flex items-end gap-1.5 pb-2">
-                        <div class="absolute inset-0 grid grid-rows-4 pointer-events-none opacity-20">
-                            <div class="border-t border-white"></div>
-                            <div class="border-t border-white"></div>
-                            <div class="border-t border-white"></div>
-                            <div class="border-t border-white"></div>
+
+                        <!-- Main Visualization Card -->
+                        <div class="glass-card rounded-2xl p-6 border border-white/5">
+                            <div class="flex justify-between items-center mb-8">
+                                <h4 class="text-xs font-black uppercase tracking-widest text-slate-400">Wealth Projection</h4>
+                                <div class="flex gap-4 text-[10px] font-bold uppercase">
+                                    <span class="flex items-center gap-2 text-cyan-400"><span class="w-2 h-2 rounded-full bg-cyan-400"></span> Historical</span>
+                                    <span class="flex items-center gap-2 text-purple-400"><span class="w-2 h-2 rounded-full border border-purple-400 border-dashed"></span> AI Estimate</span>
+                                </div>
+                            </div>
+                            <!-- Mockup SVG Chart -->
+                            <div class="h-64 w-full relative">
+                                <svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 300">
+                                    <!-- Grid lines simulated -->
+                                    <path d="M0 0 L1000 0 M0 75 L1000 75 M0 150 L1000 150 M0 225 L1000 225" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                                    <!-- Historical Area -->
+                                    <path d="M0 250 L100 240 L200 260 L300 220 L400 235 L500 200 L500 300 L0 300 Z" fill="url(#cyan-gradient)" opacity="0.1"/>
+                                    <path d="M0 250 L100 240 L200 260 L300 220 L400 235 L500 200" fill="none" class="line-path-historical" stroke-width="3" stroke-linecap="round"/>
+                                    <!-- Projection Area -->
+                                    <path d="M500 200 L600 180 L700 140 L800 100 L900 60 L1000 30 L1000 300 L500 300 Z" fill="url(#purple-gradient)" opacity="0.05"/>
+                                    <path d="M500 200 L600 180 L700 140 L800 100 L900 60 L1000 30" fill="none" class="line-path-projected" stroke-width="3" stroke-linecap="round"/>
+                                    <defs>
+                                        <linearGradient id="cyan-gradient" x1="0" x2="0" y1="0" y2="1">
+                                            <stop offset="0%" stop-color="#22d3ee" />
+                                            <stop offset="100%" stop-color="transparent" />
+                                        </linearGradient>
+                                        <linearGradient id="purple-gradient" x1="0" x2="0" y1="0" y2="1">
+                                            <stop offset="0%" stop-color="#a855f7" />
+                                            <stop offset="100%" stop-color="transparent" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="mt-6 flex justify-between text-[9px] font-black text-slate-600 uppercase tracking-[0.2em]">
+                                <span>2020</span>
+                                <span>2023</span>
+                                <span class="text-slate-400">Forecast Start</span>
+                                <span>2030</span>
+                                <span>2035</span>
+                            </div>
                         </div>
-                        <!-- Mockup Progress Bars -->
-                        <div class="flex-1 h-32 bg-indigo-500/20 rounded-t-lg border-t border-indigo-500/40"></div>
-                        <div class="flex-1 h-40 bg-indigo-500/20 rounded-t-lg border-t border-indigo-500/40"></div>
-                        <div class="flex-1 h-48 bg-indigo-500/30 rounded-t-lg border-t border-indigo-500/50"></div>
-                        <div class="flex-1 h-56 bg-indigo-500/40 rounded-t-lg border-t border-indigo-500/60"></div>
-                        <div class="flex-1 h-64 bg-indigo-500/50 rounded-t-lg border-t border-indigo-500/80"></div>
-                        <!-- Prediction Area -->
-                        <div class="flex-1 h-[70%] bg-purple-500/10 rounded-t-lg border-t-2 border-dashed border-purple-500/40"></div>
-                        <div class="flex-1 h-[85%] bg-purple-500/10 rounded-t-lg border-t-2 border-dashed border-purple-500/40"></div>
-                        <div class="flex-1 h-[95%] bg-purple-500/10 rounded-t-lg border-t-2 border-dashed border-purple-500/40"></div>
-                    </div>
-                    <div class="mt-6 flex justify-between items-center text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-                        <div class="flex gap-6">
-                            <span class="flex items-center gap-2"><span class="w-2 h-2 bg-indigo-500 rounded-full"></span> Your Progress</span>
-                            <span class="flex items-center gap-2"><span class="w-2 h-2 border border-purple-500 rounded-full"></span> Future Estimate</span>
-                        </div>
-                        <span>10 Year Forecast</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Features Section -->
-    <section id="features" class="py-32 px-4">
+    <!-- Platform Features -->
+    <section id="features" class="py-32 px-4 border-t border-white/5 bg-slate-950/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center mb-32">
+                <div>
+                    <span class="section-header-label mb-4 block">Unified Auditing</span>
+                    <h2 class="text-4xl font-black mb-8 leading-tight text-white">Get out of complex <br>spreadsheets.</h2>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        Manually tracking across bank apps and stock platforms is the old way. We provide a single matrix to update your gross values and linked debt for your entire portfolio in under a minute.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center text-cyan-400 shrink-0">
+                                <i data-lucide="zap" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm mb-1">60-Second Update</h5>
+                                <p class="text-slate-500 text-xs">Structured Snapshot Wizard for monthly record keeping.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center text-purple-400 shrink-0">
+                                <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm mb-1">AI Projections</h5>
+                                <p class="text-slate-500 text-xs">Non-linear forecasting that factors in market cycles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="glass-card rounded-2xl p-8 border border-white/10 shadow-2xl">
+                        <div class="space-y-4">
+                            <!-- Matrix Style UI Recreation -->
+                            <div class="flex items-center justify-between p-3 bg-white/5 rounded-xl border border-white/5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded bg-cyan-500/20 flex items-center justify-center"><i data-lucide="home" class="w-4 h-4 text-cyan-400"></i></div>
+                                    <span class="text-sm font-bold">Family Home</span>
+                                </div>
+                                <div class="text-sm font-mono">$1,250,000</div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white/5 rounded-xl border border-white/5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded bg-emerald-500/20 flex items-center justify-center"><i data-lucide="wallet" class="w-4 h-4 text-emerald-400"></i></div>
+                                    <span class="text-sm font-bold">Global ETF</span>
+                                </div>
+                                <div class="text-sm font-mono">$425,800</div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white/5 rounded-xl border border-white/5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded bg-purple-500/20 flex items-center justify-center"><i data-lucide="piggy-bank" class="w-4 h-4 text-purple-400"></i></div>
+                                    <span class="text-sm font-bold">Cash Savings</span>
+                                </div>
+                                <div class="text-sm font-mono">$150,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Freedom Planner -->
+    <section id="fire" class="py-32 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-indigo-600/5 -skew-y-3 transform origin-top-left -z-10"></div>
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="glass-card rounded-[2rem] p-10 relative overflow-hidden border border-purple-500/20">
+                        <div class="absolute top-0 right-0 p-8 opacity-10"><i data-lucide="sparkles" class="w-24 h-24 text-purple-400"></i></div>
+                        <span class="section-header-label mb-6 block">Retirement Planner</span>
+                        <h3 class="text-3xl font-black mb-8">Calculate your <br>Freedom Date.</h3>
+                        <div class="space-y-6 mb-10">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Income Goal Met</span>
+                                <span class="text-white font-black">72.4%</span>
+                            </div>
+                            <div class="h-3 bg-slate-800 rounded-full overflow-hidden border border-white/5">
+                                <div class="w-[72.4%] h-full bg-gradient-to-r from-cyan-400 to-purple-500"></div>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-purple-500/10 border border-purple-500/30 rounded-2xl flex items-center justify-between">
+                            <div>
+                                <p class="text-[9px] font-black text-purple-400 uppercase tracking-widest mb-1">Estimated Freedom</p>
+                                <p class="text-2xl font-black text-white uppercase">September 2032</p>
+                            </div>
+                            <i data-lucide="calendar" class="w-8 h-8 text-purple-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <span class="section-header-label mb-4 block">The Roadmap</span>
+                    <h2 class="text-4xl font-black mb-8 leading-tight">Map your exit <br>from the 9-to-5.</h2>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        Financial independence isn't about being rich; it's about having enough passive yield to cover your life. We help you find that number and track your progress in real-time.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4 font-bold text-white"><i data-lucide="check" class="w-5 h-5 text-cyan-400"></i> Inflation-Adjusted Forecasts</li>
+                        <li class="flex items-center gap-4 font-bold text-white"><i data-lucide="check" class="w-5 h-5 text-cyan-400"></i> Withdrawal Rate Analysis</li>
+                        <li class="flex items-center gap-4 font-bold text-white"><i data-lucide="check" class="w-5 h-5 text-cyan-400"></i> "What-If" Savings Simulations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section (Sync'd with App) -->
+    <section id="pricing" class="py-32 px-4">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-20">
-                <h2 class="text-4xl font-extrabold mb-6">Simple tools. Powerful results.</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">We take the complexity out of wealth management so you can focus on your life.</p>
+                <span class="section-header-label mb-4 block">Membership Plans</span>
+                <h2 class="text-4xl font-black mb-6">Choose your path to freedom</h2>
             </div>
-            
+
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-10 rounded-3xl group">
-                    <div class="w-14 h-14 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center mb-8">
-                        <i data-lucide="zap" class="w-7 h-7"></i>
+                <!-- Free -->
+                <div class="glass-card p-10 rounded-2xl flex flex-col hover:scale-105 transition-transform duration-300">
+                    <div class="mb-10">
+                        <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 mb-2">Free</h3>
+                        <div class="text-4xl font-black text-white">$0 <span class="text-xs text-slate-500 font-bold uppercase tracking-widest">/ Month</span></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">The 60-Second Update</h3>
-                    <p class="text-slate-400 leading-relaxed text-sm">Update your entire net worth in just a minute. No more messy spreadsheets or digging through dozens of different apps.</p>
+                    <ul class="space-y-5 mb-12 flex-grow">
+                        <li class="flex gap-3 text-xs font-bold text-slate-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> Up to 5 Assets</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> Monthly AI Refreshes</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> Freedom Roadmap</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i> Privacy Mode</li>
+                    </ul>
+                    <a href="https://app.mywealthforecast.com" class="w-full py-3 rounded-lg border border-white/10 text-white font-black text-[10px] uppercase tracking-[0.2em] text-center hover:bg-white/5">Get Started</a>
                 </div>
 
-                <div class="glass-card p-10 rounded-3xl group">
-                    <div class="w-14 h-14 bg-purple-500/10 text-purple-400 rounded-2xl flex items-center justify-center mb-8">
-                        <i data-lucide="brain-circuit" class="w-7 h-7"></i>
+                <!-- Starter -->
+                <div class="glass-card p-10 rounded-2xl border-indigo-500/50 flex flex-col relative scale-105 shadow-2xl shadow-indigo-500/10">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full">Recommended</div>
+                    <div class="mb-10">
+                        <h3 class="text-sm font-black uppercase tracking-widest text-indigo-400 mb-2">Starter</h3>
+                        <div class="text-4xl font-black text-white">$5 <span class="text-xs text-slate-500 font-bold uppercase tracking-widest">/ Month</span></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Realistic Predictions</h3>
-                    <p class="text-slate-400 leading-relaxed text-sm">Our AI doesn't just draw a straight line. It looks at market trends and inflation to give you a forecast you can actually trust.</p>
+                    <ul class="space-y-5 mb-12 flex-grow">
+                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0"></i> Up to 10 Assets</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0"></i> Weekly AI Refreshes</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0"></i> Advanced Audit Logs</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0"></i> All Free Features</li>
+                    </ul>
+                    <a href="https://app.mywealthforecast.com" class="w-full py-3 rounded-lg btn-primary text-white font-black text-[10px] uppercase tracking-[0.2em] text-center">Select Starter</a>
                 </div>
 
-                <div class="glass-card p-10 rounded-3xl group">
-                    <div class="w-14 h-14 bg-blue-500/10 text-blue-400 rounded-2xl flex items-center justify-center mb-8">
-                        <i data-lucide="layers" class="w-7 h-7"></i>
+                <!-- Pro -->
+                <div class="glass-card p-10 rounded-2xl flex flex-col hover:scale-105 transition-transform duration-300">
+                    <div class="mb-10">
+                        <h3 class="text-sm font-black uppercase tracking-widest text-purple-400 mb-2">Pro</h3>
+                        <div class="text-4xl font-black text-white">$9 <span class="text-xs text-slate-500 font-bold uppercase tracking-widest">/ Month</span></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">See "What-If"</h3>
-                    <p class="text-slate-400 leading-relaxed text-sm">Want to know what happens if you save an extra $500 a month? See the impact on your long-term future instantly.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Freedom Section -->
-    <section id="fire" class="py-32 px-4 relative">
-        <div class="max-w-7xl mx-auto glass-card rounded-[3rem] p-12 md:p-20 overflow-hidden relative">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/5 blur-[100px] rounded-full"></div>
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Plan your <br><span class="gradient-text">Freedom Date.</span></h2>
-                    <p class="text-slate-400 text-lg mb-10 leading-relaxed">
-                        Financial independence means having enough money that you don't *have* to work. We help you find your "Freedom Number" and show you the exact month you'll reach it.
-                    </p>
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4 text-white font-semibold">
-                            <div class="p-2 bg-indigo-500/20 rounded-lg"><i data-lucide="calendar" class="w-5 h-5 text-indigo-400"></i></div>
-                            Know your "Work-Free" month and year
-                        </div>
-                        <div class="flex items-center gap-4 text-white font-semibold">
-                            <div class="p-2 bg-purple-500/20 rounded-lg"><i data-lucide="trending-up" class="w-5 h-5 text-purple-400"></i></div>
-                            Plan for a life without the 9-to-5
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-black/40 rounded-3xl p-8 border border-white/5 relative">
-                    <div class="flex justify-between items-center mb-10">
-                        <span class="text-xs font-black uppercase tracking-widest text-slate-500">Progress to Freedom</span>
-                        <span class="text-indigo-400 font-bold">72% Finished</span>
-                    </div>
-                    <div class="flex items-end gap-1 h-32 mb-8">
-                        <div class="flex-1 h-1/4 bg-white/5 rounded-t"></div>
-                        <div class="flex-1 h-1/3 bg-white/5 rounded-t"></div>
-                        <div class="flex-1 h-1/2 bg-white/10 rounded-t"></div>
-                        <div class="flex-1 h-2/3 bg-indigo-500/40 rounded-t"></div>
-                        <div class="flex-1 h-3/4 bg-indigo-500/60 rounded-t border-t-2 border-indigo-400"></div>
-                        <div class="flex-1 h-full bg-indigo-500 rounded-t shadow-[0_0_20px_rgba(99,102,241,0.4)]"></div>
-                    </div>
-                    <div class="bg-indigo-500/10 border border-indigo-500/20 p-6 rounded-2xl flex justify-between items-center">
-                        <div>
-                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Estimated Freedom Date</p>
-                            <p class="text-2xl font-black text-white">Sep 2032</p>
-                        </div>
-                        <i data-lucide="sparkles" class="w-8 h-8 text-indigo-400 opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Security Section -->
-    <section id="security" class="py-32 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-extrabold mb-16">Your data is yours. Period.</h2>
-            <div class="grid md:grid-cols-2 gap-12 text-left">
-                <div class="flex gap-6">
-                    <div class="flex-shrink-0 w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10">
-                        <i data-lucide="shield-check" class="w-6 h-6 text-indigo-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-3">Total Privacy</h4>
-                        <p class="text-slate-400 text-sm leading-relaxed">Your financial information is locked and isolated. Even we can't see your specific numbers.</p>
-                    </div>
-                </div>
-                <div class="flex gap-6">
-                    <div class="flex-shrink-0 w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10">
-                        <i data-lucide="eye-off" class="w-6 h-6 text-purple-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-3">Public Mode</h4>
-                        <p class="text-slate-400 text-sm leading-relaxed">Checking your progress at a cafe? One click hides all your dollar amounts from prying eyes.</p>
-                    </div>
-                </div>
-                <div class="flex gap-6">
-                    <div class="flex-shrink-0 w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10">
-                        <i data-lucide="lock" class="w-6 h-6 text-blue-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-3">Secure Sync</h4>
-                        <p class="text-slate-400 text-sm leading-relaxed">Your data is automatically and safely saved across all your devices, so you're never out of the loop.</p>
-                    </div>
-                </div>
-                <div class="flex gap-6">
-                    <div class="flex-shrink-0 w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10">
-                        <i data-lucide="check-circle" class="w-6 h-6 text-emerald-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-3">Verified Accuracy</h4>
-                        <p class="text-slate-400 text-sm leading-relaxed">We keep a timestamped record of every update, so you can see exactly how much you've grown over the years.</p>
-                    </div>
+                    <ul class="space-y-5 mb-12 flex-grow">
+                        <li class="flex gap-3 text-xs font-bold text-slate-300"><i data-lucide="sparkles" class="w-4 h-4 text-amber-400 shrink-0"></i> Unlimited Assets</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-300"><i data-lucide="sparkles" class="w-4 h-4 text-amber-400 shrink-0"></i> Daily AI Refreshes</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-300"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i> Priority Cloud Vault</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-300"><i data-lucide="check" class="w-4 h-4 text-purple-400 shrink-0"></i> Beta Access</li>
+                    </ul>
+                    <a href="https://app.mywealthforecast.com" class="w-full py-3 rounded-lg border border-white/10 text-white font-black text-[10px] uppercase tracking-[0.2em] text-center hover:bg-white/5">Go Pro</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Final CTA Section -->
-    <section class="py-24 px-4">
-        <div class="max-w-4xl mx-auto glass-card rounded-[3rem] p-12 text-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 -z-10"></div>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Ready to see your future?</h2>
+    <section class="py-32 px-4">
+        <div class="max-w-4xl mx-auto glass-card rounded-[2.5rem] p-16 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 -z-10"></div>
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-8">Stop guessing. <br>Start forecasting.</h2>
             <p class="text-slate-400 text-lg mb-10 max-w-xl mx-auto">
-                Join thousands of users who have traded their messy spreadsheets for a clear roadmap to freedom.
+                Join the sophisticated savers who have traded their messy spreadsheets for a clear roadmap to freedom.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://app.mywealthforecast.com" class="btn-primary text-white px-10 py-4 rounded-2xl font-bold text-lg">
+                <a href="https://app.mywealthforecast.com" class="btn-primary text-white px-10 py-4 rounded-xl font-black text-sm uppercase tracking-widest">
                     Create My Free Forecast
                 </a>
             </div>
-            <p class="mt-6 text-slate-500 text-xs uppercase tracking-[0.2em] font-bold">No credit card required</p>
+            <p class="mt-8 text-slate-600 text-[9px] uppercase tracking-[0.3em] font-black">No credit card required to start</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-24 px-4 border-t border-white/5 bg-slate-950/20">
+    <footer class="py-24 px-4 border-t border-white/5 bg-gray-950">
         <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col items-center text-center space-y-10">
+            <div class="flex flex-col items-center text-center space-y-12">
                 <!-- Brand -->
                 <div class="flex flex-col items-center gap-4">
-                    <div class="bg-indigo-500 p-2.5 rounded-2xl shadow-lg shadow-indigo-500/10">
+                    <div class="bg-indigo-600 p-2 rounded-xl">
                         <i data-lucide="line-chart" class="text-white w-6 h-6"></i>
                     </div>
-                    <div class="text-2xl font-black text-white tracking-tight">My Wealth Forecast</div>
+                    <div class="text-xl font-bold text-white tracking-tight">My Wealth Forecast</div>
                 </div>
                 
                 <!-- Tagline -->
-                <p class="text-slate-500 text-sm font-medium uppercase tracking-[0.4em] max-w-xs leading-relaxed">
-                    Simple planning for a better future.
+                <p class="text-slate-500 text-xs font-black uppercase tracking-[0.4em] max-w-xs leading-loose">
+                    Precision for your financial future.
                 </p>
 
                 <!-- Divider -->
-                <div class="w-16 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+                <div class="w-12 h-0.5 bg-indigo-500/30"></div>
 
-                <!-- Copyright & Meta -->
-                <div class="flex flex-col items-center gap-6">
-                    <div class="flex gap-8">
-                        <a href="https://app.mywealthforecast.com" class="text-slate-600 hover:text-indigo-400 transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
-                        <a href="https://app.mywealthforecast.com" class="text-slate-600 hover:text-indigo-400 transition-colors">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="https://app.mywealthforecast.com" class="text-slate-600 hover:text-indigo-400 transition-colors">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
+                <!-- Copyright -->
+                <div class="flex flex-col items-center gap-8">
+                    <div class="flex gap-8 text-slate-600">
+                        <a href="https://app.mywealthforecast.com" class="hover:text-cyan-400 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="https://app.mywealthforecast.com" class="hover:text-indigo-400 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <a href="https://app.mywealthforecast.com" class="hover:text-purple-400 transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
                     </div>
-                    <p class="text-slate-700 text-[10px] font-bold uppercase tracking-[0.2em]">
-                        &copy; 2026 My Wealth Forecast Platform. All rights reserved.
+                    <p class="text-slate-700 text-[9px] font-black uppercase tracking-[0.25em]">
+                        &copy; 2026 My Wealth Forecast. Platform by Elite Financial Systems.
                     </p>
                 </div>
             </div>
@@ -359,7 +449,14 @@
                     const target = document.querySelector(targetId);
                     if (target) {
                         e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth' });
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
                     }
                 }
             });
