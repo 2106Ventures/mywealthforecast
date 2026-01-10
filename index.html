@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Wealth Forecast | Precision Financial Intelligence</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236366f1'/%3E%3Cpath d='M7 22l6-6 4 4 8-8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M25 12h-5m5 0v5' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M7 22l6-6 4 4 8-8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M25 12h-5m5 0v5' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -18,6 +18,7 @@
             --app-accent-purple: #a855f7;
             --app-card-bg: rgba(15, 23, 42, 0.6);
             --app-border: rgba(51, 65, 85, 0.5);
+            --brand-blue: #2563eb;
         }
 
         body { 
@@ -45,13 +46,13 @@
         }
 
         .btn-primary {
-            background: #6366f1;
+            background: var(--brand-blue);
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-primary:hover {
-            background: #4f46e5;
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+            background: #1d4ed8;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
             transform: translateY(-1px);
         }
 
@@ -86,7 +87,7 @@
 <body class="overflow-x-hidden">
 
     <!-- Subtle Background Elements -->
-    <div class="fixed top-0 right-0 w-[50vw] h-[50vw] bg-indigo-500/10 blur-[120px] -z-10 rounded-full"></div>
+    <div class="fixed top-0 right-0 w-[50vw] h-[50vw] bg-blue-600/10 blur-[120px] -z-10 rounded-full"></div>
     <div class="fixed bottom-0 left-0 w-[40vw] h-[40vw] bg-purple-500/5 blur-[120px] -z-10 rounded-full"></div>
 
     <!-- Navigation -->
@@ -94,7 +95,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center gap-3">
-                    <div class="bg-indigo-600 p-1.5 rounded-lg">
+                    <div class="bg-[#2563eb] p-1.5 rounded-lg shadow-lg shadow-blue-500/20">
                         <i data-lucide="line-chart" class="text-white w-5 h-5"></i>
                     </div>
                     <span class="text-lg font-bold tracking-tight text-white">My Wealth Forecast</span>
@@ -121,7 +122,7 @@
                 Enterprise Wealth Intelligence
             </div>
             <h1 class="text-5xl md:text-7xl font-black text-white leading-[1] mb-6 tracking-tight">
-                Forecast your <br><span class="gradient-text">financial future.</span>
+                Forecast your <span class="gradient-text">financial future.</span>
             </h1>
             <p class="text-lg text-slate-400 mb-12 max-w-xl mx-auto leading-relaxed font-medium">
                 Get out of complex spreadsheets. Professional-grade auditing meets AI-driven intelligence to map your journey to freedom.
@@ -165,7 +166,7 @@
                                 </div>
                             </div>
                             <div class="flex flex-col justify-center items-end gap-3">
-                                <button class="w-full py-2.5 px-4 bg-indigo-600/10 border border-indigo-500/30 text-indigo-400 rounded-lg text-[11px] font-black uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition-all">
+                                <button class="w-full py-2.5 px-4 bg-blue-600/10 border border-blue-500/30 text-blue-400 rounded-lg text-[11px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all">
                                     Snapshot Wizard
                                 </button>
                                 <div class="flex gap-2 w-full">
@@ -286,7 +287,7 @@
 
     <!-- Freedom Planner -->
     <section id="fire" class="py-32 px-4 relative overflow-hidden">
-        <div class="absolute inset-0 bg-indigo-600/5 -skew-y-3 transform origin-top-left -z-10"></div>
+        <div class="absolute inset-0 bg-blue-600/5 -skew-y-3 transform origin-top-left -z-10"></div>
         <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-20 items-center">
                 <div class="order-2 lg:order-1">
@@ -353,17 +354,17 @@
                 </div>
 
                 <!-- Starter -->
-                <div class="glass-card p-10 rounded-2xl border-indigo-500/50 flex flex-col relative scale-105 shadow-2xl shadow-indigo-500/10">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full">Recommended</div>
+                <div class="glass-card p-10 rounded-2xl border-blue-500/50 flex flex-col relative scale-105 shadow-2xl shadow-blue-500/10">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full">Recommended</div>
                     <div class="mb-10">
-                        <h3 class="text-sm font-black uppercase tracking-widest text-indigo-400 mb-2">Starter</h3>
+                        <h3 class="text-sm font-black uppercase tracking-widest text-blue-400 mb-2">Starter</h3>
                         <div class="text-4xl font-black text-white">$5 <span class="text-xs text-slate-500 font-bold uppercase tracking-widest">/ Month</span></div>
                     </div>
                     <ul class="space-y-5 mb-12 flex-grow">
-                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0"></i> Up to 10 Assets</li>
-                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0"></i> Weekly AI Refreshes</li>
-                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0"></i> Advanced Audit Logs</li>
-                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0"></i> All Free Features</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-blue-400 shrink-0"></i> Up to 10 Assets</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-blue-400 shrink-0"></i> Weekly AI Refreshes</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-blue-400 shrink-0"></i> Advanced Audit Logs</li>
+                        <li class="flex gap-3 text-xs font-bold text-slate-200"><i data-lucide="check" class="w-4 h-4 text-blue-400 shrink-0"></i> All Free Features</li>
                     </ul>
                     <a href="https://app.mywealthforecast.com" class="w-full py-3 rounded-lg btn-primary text-white font-black text-[10px] uppercase tracking-[0.2em] text-center">Select Starter</a>
                 </div>
@@ -409,7 +410,7 @@
             <div class="flex flex-col items-center text-center space-y-12">
                 <!-- Brand -->
                 <div class="flex flex-col items-center gap-4">
-                    <div class="bg-indigo-600 p-2 rounded-xl">
+                    <div class="bg-[#2563eb] p-2 rounded-xl shadow-lg shadow-blue-500/10">
                         <i data-lucide="line-chart" class="text-white w-6 h-6"></i>
                     </div>
                     <div class="text-xl font-bold text-white tracking-tight">My Wealth Forecast</div>
@@ -421,14 +422,14 @@
                 </p>
 
                 <!-- Divider -->
-                <div class="w-12 h-0.5 bg-indigo-500/30"></div>
+                <div class="w-12 h-0.5 bg-blue-500/30"></div>
 
                 <!-- Copyright -->
                 <div class="flex flex-col items-center gap-8">
                     <div class="flex gap-8 text-slate-600">
-                        <a href="https://app.mywealthforecast.com" class="hover:text-cyan-400 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                        <a href="https://app.mywealthforecast.com" class="hover:text-indigo-400 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                        <a href="https://app.mywealthforecast.com" class="hover:text-purple-400 transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        <a href="https://app.mywealthforecast.com" class="hover:text-blue-400 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="https://app.mywealthforecast.com" class="hover:text-blue-400 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <a href="https://app.mywealthforecast.com" class="hover:text-blue-400 transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
                     </div>
                     <p class="text-slate-700 text-[9px] font-black uppercase tracking-[0.25em]">
                         &copy; 2026 My Wealth Forecast. Platform by Elite Financial Systems.
